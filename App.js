@@ -1,5 +1,12 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import { StatusBar, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  StatusBar,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  I18nManager,
+} from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import {
   useFonts as useOswald,
@@ -8,6 +15,10 @@ import {
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { theme } from "./src/infrastructure/theme";
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
+
+// Force LTR text direction
+I18nManager.allowRTL(false);
+I18nManager.forceRTL(false);
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -31,5 +42,3 @@ export default function App() {
     </>
   );
 }
-
-const styles = StyleSheet.create({});
