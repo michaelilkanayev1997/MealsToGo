@@ -11,12 +11,19 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { theme } from "./src/infrastructure/theme";
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import { SafeArea } from "./src/components/utility/safe-area.component";
+import { Ionicons } from "@expo/vector-icons";
 
 // Force LTR text direction
 I18nManager.allowRTL(false);
 I18nManager.forceRTL(false);
 
 const Tab = createBottomTabNavigator();
+
+const TAB_ICON = {
+  Restaurants: "md-restaurant",
+  Map: "md-map",
+  Settings: "md-settings",
+};
 
 const Settings = () => (
   <SafeArea>
@@ -28,6 +35,17 @@ const Map = () => (
     <Text>Map</Text>
   </SafeArea>
 );
+
+const createScreenOptions = ({ route }) => {
+  const iconName = TAB_ICON[route.name];
+  return {
+    tabBarIcon: ({ size, color }) => (
+      <Ionicons name={iconName} size={size} color={color} />
+    ),
+    tabBarActiveTintColor: "tomato",
+    tabBarInactiveTintColor: "gray",
+  };
+};
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -46,7 +64,7 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <Tab.Navigator>
+          <Tab.Navigator screenOptions={createScreenOptions}>
             <Tab.Screen
               name="Restaurants"
               component={RestaurantsScreen}
