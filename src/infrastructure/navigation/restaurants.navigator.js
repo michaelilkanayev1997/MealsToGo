@@ -1,24 +1,17 @@
-import { Text } from "react-native";
 import {
   createStackNavigator,
   TransitionPresets,
 } from "@react-navigation/stack";
 import { RestaurantsScreen } from "../../features/restaurants/screens/restaurants.screen";
-import { SafeArea } from "../../components/utility/safe-area.component";
+import { RestaurantDetailScreen } from "../../features/restaurants/screens/restaurant-detail.screen";
 
 const RestaurantStack = createStackNavigator();
-
-const RestaurantDetail = () => (
-  <SafeArea>
-    <Text>Restaurant Detail</Text>
-  </SafeArea>
-);
 
 export const RestaurantsNavigator = () => {
   return (
     <RestaurantStack.Navigator
-      mode="modal"
       screenOptions={{
+        presentation: "modal",
         headerShown: false,
         gestureEnabled: true,
         ...TransitionPresets.ModalSlideFromBottomIOS,
@@ -30,7 +23,7 @@ export const RestaurantsNavigator = () => {
       />
       <RestaurantStack.Screen
         name="RestaurantDetail"
-        component={RestaurantDetail}
+        component={RestaurantDetailScreen}
       />
     </RestaurantStack.Navigator>
   );
