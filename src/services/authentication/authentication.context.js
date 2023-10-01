@@ -34,7 +34,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.toString());
+        setError(err);
       });
   };
 
@@ -49,9 +49,9 @@ export const AuthenticationContextProvider = ({ children }) => {
         setUser(u);
         setIsLoading(false);
       })
-      .catch((e) => {
+      .catch((err) => {
         setIsLoading(false);
-        setError(e.toString());
+        setError(err);
       });
   };
 

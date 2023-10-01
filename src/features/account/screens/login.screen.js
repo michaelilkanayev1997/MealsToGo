@@ -5,10 +5,22 @@ import {
   AccountContainer,
   AuthButton,
   AuthInput,
+  ErrorContainer,
 } from "../components/account.styles";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+
+const firebaseErrors = {
+  "auth/invalid-login-credentials":
+    "Invalid email or password. Please try again.",
+  "auth/invalid-email": "Invalid Credentials. Please try again.",
+  "auth/missing-password": "Please enter the password.",
+  "auth/user-disabled": "Your account has been disabled.",
+  "auth/user-not-found": "User not found. Please check your email.",
+  "auth/wrong-password": "Invalid email or password. Please try again.",
+  "auth/network-request-failed": "Network error. Please try again later.",
+};
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -18,6 +30,7 @@ export const LoginScreen = () => {
   return (
     <AccountBackground>
       <AccountCover />
+
       <AccountContainer>
         <AuthInput
           label="E-mail"
@@ -34,14 +47,17 @@ export const LoginScreen = () => {
             textContentType="password"
             secureTextEntry
             autoCapitalize="none"
-            secure
             onChangeText={(p) => setPassword(p)}
           />
         </Spacer>
         {error && (
-          <Spacer size="large">
-            <Text variant="error">{error}</Text>
-          </Spacer>
+          <ErrorContainer size="large">
+            <Text variant="error">
+              {firebaseErrors[error.code] ||
+                error.message ||
+                "An unknown error occurred."}
+            </Text>
+          </ErrorContainer>
         )}
         <Spacer size="large">
           <AuthButton
