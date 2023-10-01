@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { I18nManager } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import { initializeApp } from "firebase/app";
+import { AsyncStorage } from "@react-native-async-storage/async-storage";
+import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -26,7 +27,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase Auth with AsyncStorage
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(AsyncStorage),
+});
 
 // Force LTR text direction
 I18nManager.allowRTL(false);
