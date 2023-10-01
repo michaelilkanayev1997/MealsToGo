@@ -28,13 +28,13 @@ export const AuthenticationContextProvider = ({ children }) => {
   const onLogin = (email, password) => {
     setIsLoading(true);
     loginRequest(auth, email, password)
-      .then((u) => {
-        setUser(u);
+      .then((user) => {
+        setUser(user);
         setIsLoading(false);
       })
-      .catch((e) => {
+      .catch((err) => {
         setIsLoading(false);
-        setError(e.toString());
+        setError(err.toString());
       });
   };
 
