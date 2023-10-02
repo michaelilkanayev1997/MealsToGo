@@ -1,10 +1,10 @@
-import { useState, createContext, useRef } from "react";
+import { useState, createContext, useRef, useEffect } from "react";
 import {
   signOut,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-  getAuth,
 } from "firebase/auth";
+import { auth } from "../firebase";
 
 import { loginRequest } from "./authentication.service";
 
@@ -14,16 +14,20 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
-  const auth = useRef(getAuth()).current;
 
-  onAuthStateChanged(auth, (usr) => {
-    if (usr) {
-      setUser(usr);
-      setIsLoading(false);
-    } else {
-      setIsLoading(false);
-    }
-  });
+  useEffect(() => {
+    const unsubscribe = () => {
+      onAuthStateChanged(auth, (usr) => {
+        if (usr) {
+          setUser(usr);
+        } else {
+          setUser(null);
+        }
+        setIsLoading(false);
+      });
+    };
+    unsubscribe();
+  }, []);
 
   const onLogin = (email, password) => {
     setIsLoading(true);
