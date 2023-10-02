@@ -1,4 +1,5 @@
 import { SettingsScreen } from "../../features/settings/screens/settings.screen";
+import { FavouritesScreen } from "../../features/settings/screens/favourites.screen";
 import {
   createStackNavigator,
   CardStyleInterpolators,
@@ -11,7 +12,6 @@ export const SettingsNavigator = ({ route, navigation }) => {
     <SettingsStack.Navigator
       screenOptions={{
         headerShown: true,
-        headerTransparent: true,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
     >
@@ -19,10 +19,10 @@ export const SettingsNavigator = ({ route, navigation }) => {
         options={{
           header: () => null,
         }}
-        name="Settings"
+        name="mainSettings"
         component={SettingsScreen}
       />
-      <SettingsStack.Screen name="Favourites" component={() => null} />
+      <SettingsStack.Screen name="Favourites" component={FavouritesScreen} />
     </SettingsStack.Navigator>
   );
 };
