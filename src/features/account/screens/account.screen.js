@@ -18,7 +18,6 @@ export const AccountScreen = ({ navigation }) => {
         <LottieView
           key="animation"
           autoPlay
-          loop
           resizeMode="cover"
           source={require("../../../../assets/watermelon.json")}
         />
