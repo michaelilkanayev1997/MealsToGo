@@ -12,18 +12,20 @@ export const AuthenticationContext = createContext();
 
 export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isFirstLoading, setIsFirstLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const unsubscribe = () => {
+      setIsFirstLoading(true);
       onAuthStateChanged(auth, (usr) => {
         if (usr) {
           setUser(usr);
         } else {
           setUser(null);
         }
-        setIsLoading(false);
+        setIsFirstLoading(false);
       });
     };
     unsubscribe();
@@ -72,6 +74,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         isAuthenticated: !!user,
         user,
         isLoading,
+        isFirstLoading,
         error,
         onLogin,
         onRegister,

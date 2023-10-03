@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ScrollView } from "react-native";
 import { List, Divider } from "react-native-paper";
-import { RestaurantInfoCard } from "../components/restaurant-Info-card.component";
+import RestaurantInfoCard from "../components/restaurant-Info-card.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 
 export const RestaurantDetailScreen = ({ route }) => {
