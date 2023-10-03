@@ -21,7 +21,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.michaelilkanayev.MealsToGo"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7cf3fa88-52cc-411a-9a37-e6a2d1ee2351"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/7cf3fa88-52cc-411a-9a37-e6a2d1ee2351"
     }
   }
 }
