@@ -6,6 +6,7 @@ import { MapScreen } from "../../features/map/screens/map.screen";
 import { RestaurantsContextProvider } from "../../services/restaurants/restaurants.context";
 import { LocationContextProvider } from "../../services/location/location.context";
 import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
+import "react-native-gesture-handler";
 
 const Tab = createBottomTabNavigator();
 
