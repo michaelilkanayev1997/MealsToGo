@@ -1,4 +1,3 @@
-import { Text } from "react-native";
 import { useContext } from "react";
 import { AppNavigator } from "./app.navigator";
 import { AccountNavigator } from "./account.navigator";
