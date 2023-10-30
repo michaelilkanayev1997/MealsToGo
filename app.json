@@ -22,7 +22,12 @@
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.michaelilkanayev.MealsToGo"
+      "package": "com.michaelilkanayev.MealsToGo",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDqaFGASAZuUIKEOZuRMULHBnY8ZTMLUHs"
+        }
+      }
     },
     "runtimeVersion": {
       "policy": "appVersion"
