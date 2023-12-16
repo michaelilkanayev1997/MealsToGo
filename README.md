@@ -15,6 +15,9 @@
   <img src="https://github.com/michaelilkanayev1997/MealsToGo/assets/93651794/3eb78ff5-bff9-46b9-ba19-90c9625779fe" width="180" height="380" alt="Screenshot 5" />
 </div> 
 
+## Video Showcase
+[Watch a Video Demonstration of the App](https://www.youtube.com/watch?v=03zNfLs8VT8&t=3s)
+
 ## Technologies Used
 
 - **Framework**: React Native.
